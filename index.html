@@ -6,17 +6,62 @@
     <title>covid-19</title>
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-database.js"></script>
-    <script src="./app.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
 
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
 
+    <script src="./app.js"></script>  
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+   
 </head>
 <body>
-    
-    <div id="googleMap" style="height: 100vh;width: 100%;">
+  
+  <nav class="navbar navbar-dark bg-dark">
+    <span class="navbar-brand mb-0 h1">BlackDevil</span>
+      <ul class="nav justify-content-end">
+        <li class="nav-item active">
+          <a class="nav-link" href="#" style="color: #fff;">Report</a>
+        </li>
+      </ul>
+  </nav>
+  
+
+  <center class="mt-3 mb-3">
+    <h2>HappyFaces</h2>
+    <h4>Welcome to AdminPanel</h4>
+    <br>
+    <h6>Collect total food Packets: 10</h6>
+
+  </center>
+
+  <div  id='map' style='height: 50vh; margin: 2%;box-shadow:0px 0px 10px grey; '>  
+  </div>
+  <br>
+
+    <div class="container-fluid mb-4">
+        <div class="row" id="output">
+          
+          
+        </div>
     </div>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdm4RC8P6kJY2YcklArvO9FN-UGOaW2TQ&callback=initMap"async defer></script>
+
+      <nav class="navbar sticky-bottom navbar-dark bg-dark justify-content-center">
+        <a class="navbar-brand" href="https://blackdevil.co" style="font-size: 13px;">made with ❤️ by black devil</a>
+
+      </nav>
+
+<script>
+
+  mapboxgl.accessToken = 'pk.eyJ1IjoiYmxhY2tkZXZpbDk4IiwiYSI6ImNrNGpxY3BmODBjbHQzam1sbTBuaWh1MDcifQ.tR35Ox0EonGORTdc83r_Nw';
+  var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11',
+    center: [71.6636, 22.1723],
+    zoom: 13,
+    
+  });
+</script>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
