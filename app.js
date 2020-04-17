@@ -9,7 +9,7 @@ const firebaseConfig = {
   measurementId: "G-Z7MHS2M75D"
 };
 firebase.initializeApp(firebaseConfig);
-var lat, long, k;
+var lat, long, k, total=0;
 
 const dbRefObject = firebase.database().ref().child('Location');
 var size = 0;
@@ -33,31 +33,38 @@ getdata = () => {
 
       for (var i = 0; i < keys.length; i++) {
         k = keys[i];
-        lat = datas[k].lat;
-        long = datas[k].long;
+        total = total + parseInt(datas[k].packets);
+        
+        setInterval(function() {
+          window.location.reload();
+        }, 300000); 
 
         output += `
         <div class="col-sm" style="margin: 2%;">
-      <div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">${datas[k].name}</h5>
-    <h6 class="card-subtitle mb-2 text-muted">${datas[k].address}</h6>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Food Packets : ${datas[k].packets}</li>
-    <li class="list-group-item">Number : ${datas[k].number}</li>
-    <li class="list-group-item">lat, long : ${datas[k].lat} , ${datas[k].long}</li>
-    <li class="list-group-item">${k}</li>
-  </ul>
-  <div class="card-body">
-    <a href="#" class="card-link" onclick="delete_row()">Packets Accept</a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
-</div>
-</div>
-    `;
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">${datas[k].name}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">${datas[k].address}</h6>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Food Packets : ${datas[k].packets}</li>
+              <li class="list-group-item">Number : ${datas[k].number}</li>
+              <li class="list-group-item">lat, long : ${datas[k].lat} , ${datas[k].long}</li>
+              <li class="list-group-item">${k}</li>
+            </ul>
+            <div class="card-body">
+              <a href="#" class="card-link" onclick="delete_row()">Packets Accept</a>
+              <a href="#" class="card-link">Another link</a>
+            </div>
+          </div>
+        </div>`;
+
+    totalpack = `<h6>Collect total packets : ${total}`;
 
         document.getElementById("output").innerHTML = output;
+        document.getElementById("totalpack").innerHTML = totalpack;
+
+        console.log(total);
       }
     }
   });
